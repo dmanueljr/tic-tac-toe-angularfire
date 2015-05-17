@@ -42,9 +42,27 @@ angular
 				self.game[$index].whoIsHere = "ghost";
 			}
 
+
+			for (i = 0; i < self.play.icons.length; i++) {
+				var t = self.play.icons[i]
+				for (i = 0; i < self.play.winningCombo.length; i++) {
+					var w = self.play.winningCombo[i]
+					console.log(t)
+					// console.log(w[1])
+					// console.log(self.game[w[0]])
+					// console.log(self.game[w[1]].whoIsHere)
+					// if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
+					// 	console.log(t + " wins!")
+					// }
+				}
+			}
+
+			
+			// checks access to winningCombo and icons in firebase
+			console.log("winningCombo length is: " + self.play.winningCombo.length)
+			console.log("icons length is: " + self.play.icons.length)
 			console.log(self.play.winningCombo[0])
 			console.log(self.play.icons)
-
 
 			// resets counter
 			if (self.play.moveCounter < 9) {
