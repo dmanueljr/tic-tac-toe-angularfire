@@ -7,7 +7,7 @@ angular
 	function TictactoeController($firebaseObject) {
 
 		var self = this;
-		self.playerMove = playerMove;
+		// self.playerMove = playerMove;
 		
 		// firebase connection to setup game board
 		self.game = (function() {
@@ -33,7 +33,7 @@ angular
 		})();
 
 		// determines player move and alternate player turn
-		function playerMove ($index) {
+		self.playerMove = (function($index) {
 
 			// alternate turns
 			if (self.play.moveCounter % 2 === 0) {
@@ -44,16 +44,16 @@ angular
 
 
 			for (i = 0; i < self.play.icons.length; i++) {
-				var t = self.play.icons[i]
-				for (i = 0; i < self.play.winningCombo.length; i++) {
-					var w = self.play.winningCombo[i]
-					console.log(t)
+				var t = self.play.icons[i];
+				console.log(t);
+				for (x = 0; x < self.play.winningCombo.length; x++) {
+					var w = self.play.winningCombo[x]
 					// console.log(w[1])
 					// console.log(self.game[w[0]])
 					// console.log(self.game[w[1]].whoIsHere)
-					// if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
-					// 	console.log(t + " wins!")
-					// }
+					if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
+						console.log(t + " wins!")
+					}
 				}
 			}
 
@@ -77,7 +77,7 @@ angular
 			console.log(self.play.moveCounter);
 			console.log(self.game[$index].whoIsHere);
 			console.log($index);
-		}
+		})
 
 
 		// determines winning move
