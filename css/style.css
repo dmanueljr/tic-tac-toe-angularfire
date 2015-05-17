@@ -4,13 +4,60 @@ body {
 	background-color: #000000;
 }
 
-.wrapper {
+header {
+	width: 90%;
+	margin: 20px auto;
+	text-align: center;
+}
+
+header h1 {
+	border: 2px dotted #ffff00;
+	display: inline-block;
+	margin: 0;
+	padding: 20px;
+}
+
+#message {
 	width: 640px;
+}
+
+#reset {
+	width: 260px;
+}
+
+.wrapper {
+	width: 90%;
 	margin: 0 auto;
+	border: 1px dashed red;
+	text-align: center;
+}
+
+.p-one-block {
+	float: left;
+	text-align: left;
+}
+
+.p-two-block {
+	float: right;
+	text-align: right;
+} 
+
+.p-one-block, .p-two-block {
+	border: 1px dashed yellow;
+	width: 300px;
+	height: 618px;
+}
+
+.p-one-block h1, .p-two-block h1 {
+	margin: 0;
+}
+
+.board {
+	width: 640px;
 	border: 1px dashed yellow;
 	text-align: center;
 	padding: 8px 0 3px;
-	/*display: none;*/
+	display: inline-block;
 	/*#wrapper box-shadow: 0 2px 16px  15px yellow;*/
 }
 
@@ -21,6 +68,18 @@ body {
 	height: 200px;
 	border: 1px solid #0000ff;
 	box-shadow: 2px 2px 6px #5c5c5c inset;	
+}
+
+.empty.ng-scope.null:hover {
+	box-shadow: 1px 4px 10px 14px #39ff14;	
+}
+
+.empty.ng-scope.pacman:hover {
+	box-shadow: 1px 4px 10px 14px #ffff00;	
+}
+
+.empty.ng-scope.ghost:hover {
+	box-shadow: 1px 4px 10px 14px #ff0000;	
 }
 
 .pacman {
@@ -42,3 +101,23 @@ body {
 	border: 1px solid #0000ff;
 	box-shadow: 2px 2px 6px #5c5c5c inset;
 }
+
+
+.clearfix:before,
+.clearfix:after {
+  content: ""; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+
+
+
+
+
+
+
+
