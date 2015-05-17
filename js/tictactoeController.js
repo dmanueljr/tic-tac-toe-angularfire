@@ -7,7 +7,6 @@ angular
 	function TictactoeController($firebaseObject) {
 
 		var self = this;
-		// self.playerMove = playerMove;
 		
 		// firebase connection to setup game board
 		self.game = (function() {
@@ -16,7 +15,7 @@ angular
             return game;            
         })();
 
-        // fire base connecdtion for players
+        // fire base connection for play rules
         self.play = (function() {
         	var ref = new Firebase("https://my-tictactoe-app.firebaseio.com/");
         	var play = $firebaseObject(ref);
@@ -29,11 +28,20 @@ angular
 				self.game[i] = {whoIsHere: "null"}	
 				self.game.$save();
 			}
-			console.log(self.game);
+			// console.log(self.game);
 		})();
 
-		// determines player move and alternate player turn
-		self.playerMove = (function($index) {
+		// sets counter
+		self.setCounter = (function() {
+			if (self.play.moveCounter < 9) {
+				self.play.moveCounter += 1;	
+			}	else {
+				self.play.moveCounter = 0;
+			}			
+		});
+
+		// validate player move
+		self.validateMove = (function($index) {
 
 			// alternate turns
 			if (self.play.moveCounter % 2 === 0) {
@@ -42,56 +50,78 @@ angular
 				self.game[$index].whoIsHere = "ghost";
 			}
 
+			self.setCounter();
+		});
 
+
+		// tallies player scores
+		self.getScore = (function(x) {
+			if (x == "pacman") {
+				self.play.p1Score += 1;
+			}	else {
+				self.play.p2Score += 1;
+			}
+		});
+
+
+		// checks boxes for winning combination
+		self.getWinner = (function() {
 			for (i = 0; i < self.play.icons.length; i++) {
 				var t = self.play.icons[i];
-				console.log(t);
+				// console.log(t);
 				for (x = 0; x < self.play.winningCombo.length; x++) {
-					var w = self.play.winningCombo[x]
+					var w = self.play.winningCombo[x];
 					// console.log(w[1])
 					// console.log(self.game[w[0]])
 					// console.log(self.game[w[1]].whoIsHere)
 					if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
-						console.log(t + " wins!")
-					}
+						self.play.winner = t + " wins!";
+						// alert(self.play.winner)
+						self.getScore(t);
+						alert(t);
+						//resets moveCounter and saves
+						self.play.moveCounter = 0;
+						self.play.$save;
+					}	
 				}
 			}
+		});
 
-			
-			// checks access to winningCombo and icons in firebase
-			console.log("winningCombo length is: " + self.play.winningCombo.length)
-			console.log("icons length is: " + self.play.icons.length)
-			console.log(self.play.winningCombo[0])
-			console.log(self.play.icons)
+		// determines player move and alternate player turn
+		self.playerMove = (function($index) {
 
-			// resets counter
-			if (self.play.moveCounter < 9) {
-				self.play.moveCounter += 1;	
-			}	else {
-				self.play.moveCounter = 0;
+			// checks empty box for valid turn
+			if (self.game[$index].whoIsHere == "null") {
+				self.validateMove($index);
+				self.getWinner();
+			}	else	{
+				alert("not a valid move");
 			}
+
 
 			// saves and checks logs
 			self.play.$save();
 			self.game.$save();
-			console.log(self.play.moveCounter);
-			console.log(self.game[$index].whoIsHere);
-			console.log($index);
+
 		})
 
-
-		// determines winning move
+		
+		
 
 		
 
-
-
+			// console.log(self.play.moveCounter);
+			// console.log(self.game[$index].whoIsHere);
+			// console.log($index);
+			// checks access to winningCombo and icons in firebase
+			// console.log("winningCombo length is: " + self.play.winningCombo.length)
+			// console.log("icons length is: " + self.play.icons.length)
+			// console.log(self.play.winningCombo[0])
+			// console.log(self.play.icons)
 
 	// ASK!!	==> // console.log(self.game.whoIsHere[$index]);
 
 	// .whoIsHere[$index] = "pacman";
 
-
-	// gets winning combination 
 
 	}
