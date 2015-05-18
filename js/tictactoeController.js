@@ -25,7 +25,7 @@ angular
 		// initial setup of tic-tac-toe game board
 		self.getBoxes = (function() {
 			for (var i = 0; i < 9; i++) {
-				self.game[i] = {whoIsHere: "null"}	
+				self.game[i] = {whoIsHere: "null"};
 				self.game.$save();
 			}
 			// console.log(self.game);
@@ -54,13 +54,33 @@ angular
 		});
 
 
+		// clears board and counter
+		self.resetBoard = (function() {
+			for (var i = 0; i < 9; i++) {
+				self.game[i] = {whoIsHere: "null"};
+			}
+			self.game.$save;
+			self.play.moveCounter = 0;
+		});
+
+
 		// tallies player scores
 		self.getScore = (function(x) {
+
+			// assigns score to winning player
 			if (x == "pacman") {
 				self.play.p1Score += 1;
 			}	else {
 				self.play.p2Score += 1;
 			}
+
+
+			self.resetBoard();			
+
+			// resets board if game series not over
+//			// if (self.play.p1Score < 5 && self.play.p2Score < 5) {
+
+			// }
 		});
 
 
@@ -75,12 +95,14 @@ angular
 					// console.log(self.game[w[0]])
 					// console.log(self.game[w[1]].whoIsHere)
 					if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
-						self.play.winner = t + " wins!";
+
 						// alert(self.play.winner)
+						self.play.winner = t + " wins!";
 						self.getScore(t);
-						alert(t);
+
+						// alert(t);
 						//resets moveCounter and saves
-						self.play.moveCounter = 0;
+						// self.play.moveCounter = 0;
 						self.play.$save;
 					}	
 				}

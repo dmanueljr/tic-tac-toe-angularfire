@@ -14,11 +14,12 @@ header h1 {
 	border: 2px dotted #ffff00;
 	display: inline-block;
 	margin: 0;
-	padding: 20px;
+	padding: 10px;
 }
 
 #message {
 	width: 640px;
+	font-size: 40px;
 }
 
 #reset {
@@ -26,7 +27,7 @@ header h1 {
 }
 
 .wrapper {
-	width: 90%;
+	width: 80%;
 	margin: 0 auto;
 	border: 1px dashed red;
 	text-align: center;
@@ -44,7 +45,7 @@ header h1 {
 
 .p-one-block, .p-two-block {
 	border: 1px dashed yellow;
-	width: 300px;
+	width: 240px;
 	height: 618px;
 }
 
