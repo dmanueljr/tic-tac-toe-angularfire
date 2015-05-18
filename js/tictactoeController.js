@@ -10,7 +10,7 @@ angular
 		
 		// firebase connection to setup game board
 		self.game = (function() {
-            var ref = new Firebase("https://my-tictactoe-app.firebaseio.com/game-board");
+            var ref = new Firebase("https://my-tictactoe-app.firebaseio.com/gameboard");
             var game = $firebaseObject(ref);
             return game;            
         })();
@@ -28,6 +28,7 @@ angular
 				self.game[i] = {whoIsHere: "null"};
 				self.game.$save();
 			}
+
 			// console.log(self.game);
 		})();
 
@@ -59,8 +60,10 @@ angular
 			for (var i = 0; i < 9; i++) {
 				self.game[i] = {whoIsHere: "null"};
 			}
-			self.game.$save;
 			self.play.moveCounter = 0;
+			self.play.clearboard.visibility = "hidden";	
+			self.play.$save();
+			self.game.$save();		
 		});
 
 
@@ -70,12 +73,19 @@ angular
 			// assigns score to winning player
 			if (x == "pacman") {
 				self.play.p1Score += 1;
+				self.play.winner.color = "pacman-wins";
+				self.play.winner.message = self.play.playerOne.name + " wins!";
 			}	else {
 				self.play.p2Score += 1;
+				self.play.winner.color = "ghost-wins";
+				self.play.winner.message = self.play.playerTwo.name + " wins!";
 			}
 
+			for (i = 0; i < 9; i++) {
+				self.game[i].whoIsHere = x;
+			}
 
-			self.resetBoard();			
+			self.play.clearboard.visibility = "show";	
 
 			// resets board if game series not over
 //			// if (self.play.p1Score < 5 && self.play.p2Score < 5) {
@@ -95,17 +105,10 @@ angular
 					// console.log(self.game[w[0]])
 					// console.log(self.game[w[1]].whoIsHere)
 					if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
-
-						// alert(self.play.winner)
-						self.play.winner = t + " wins!";
 						self.getScore(t);
-
-						// alert(t);
-						//resets moveCounter and saves
-						// self.play.moveCounter = 0;
 						self.play.$save;
 					}	
-				}
+				} 
 			}
 		});
 
@@ -116,7 +119,7 @@ angular
 			if (self.game[$index].whoIsHere == "null") {
 				self.validateMove($index);
 				self.getWinner();
-			}	else	{
+			}	else {
 				alert("not a valid move");
 			}
 
@@ -131,7 +134,7 @@ angular
 		// gets player one name input
 		self.getPlayerOne = (function() {
 			self.play.playerOne = {name: self.text1};
-			alert("im inside getPlayerOne");
+			// alert("im inside getPlayerOne");
 			console.log(self.play.playerOne);
 			self.play.$save(self.play.playerOne);
 		});
@@ -140,7 +143,7 @@ angular
 		// gets player two name input
 		self.getPlayerTwo = (function() {
 			self.play.playerTwo = {name: self.text2};
-			alert("im inside getPlayerTwo");
+			// alert("im inside getPlayerTwo");
 			console.log(self.play.playerTwo);
 			self.play.$save(self.play.playerTwo);			
 		});

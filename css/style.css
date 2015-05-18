@@ -10,8 +10,8 @@ header {
 	text-align: center;
 }
 
-header h1 {
-	border: 2px dotted #ffff00;
+#message {
+	/*border: 2px dotted #ffff00;*/
 	display: inline-block;
 	margin: 0;
 	padding: 10px;
@@ -22,14 +22,10 @@ header h1 {
 	font-size: 40px;
 }
 
-#reset {
-	width: 260px;
-}
-
 .wrapper {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
-	border: 1px dashed red;
+	/*border: 1px dashed red;*/
 	text-align: center;
 }
 
@@ -41,11 +37,15 @@ header h1 {
 .p-two-block {
 	float: right;
 	text-align: right;
-} 
+}
+
+.p-two-block h1 {
+	color: #ff0000;
+}
 
 .p-one-block, .p-two-block {
-	border: 1px dashed yellow;
-	width: 240px;
+	/*border: 1px dashed yellow;*/
+	width: 300px;
 	height: 618px;
 }
 
@@ -85,24 +85,61 @@ header h1 {
 
 .pacman {
 	background-image: url('../images/box-pacman.png');
-	display: inline-block;
+/*	display: inline-block;
 	margin: 0 3px;
 	width: 200px;
 	height: 200px;
 	border: 1px solid #0000ff;
-	box-shadow: 2px 2px 6px #5c5c5c inset;
+	box-shadow: 2px 2px 6px #5c5c5c inset;*/
 }
 
 .ghost {
 	background-image: url('../images/box-ghost-active.png');	
-	display: inline-block;
+/*	display: inline-block;
 	margin: 0 3px;
 	width: 200px;
 	height: 200px;
 	border: 1px solid #0000ff;
-	box-shadow: 2px 2px 6px #5c5c5c inset;
+	box-shadow: 2px 2px 6px #5c5c5c inset;*/
 }
 
+.ng-pristine, .ng-valid, .ng-touched {
+	background-color: #000000;
+	color: #ffff00;
+	border: none;
+}
+
+.p-two-block .ng-pristine, 
+.p-two-block .ng-valid, 
+.p-two-block .ng-touched {
+text-align: right;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.pacman-wins {
+	color: #ffff00;
+}
+
+.ghost-wins {
+	color: #ff0000;
+}
+
+#reset {
+	border: 1px dotted green;
+	background-color: green;
+	color: #000000;
+	width: 200px;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 20px;
+}
 
 .clearfix:before,
 .clearfix:after {
