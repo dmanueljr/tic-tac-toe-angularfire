@@ -96,7 +96,7 @@ angular
 					// console.log(self.game[w[1]].whoIsHere)
 					if (self.game[w[0]].whoIsHere == t && self.game[w[1]].whoIsHere == t && self.game[w[2]].whoIsHere == t) {
 
-						// alert(self.play.winner)
+		ß				// alert(self.play.winner)
 						self.play.winner = t + " wins!";
 						self.getScore(t);
 
@@ -126,6 +126,20 @@ angular
 			self.game.$save();
 
 		})
+
+		self.getPlayerOne = (function() {
+			self.play.playerOne = {name: self.text};
+			alert("im inside getPlayerOne");
+			console.log(self.play.playerOne);
+			self.play.$save(self.play.playerOne);
+		});
+
+		self.getPlayerTwo = (function() {
+			self.play.playerTwo = {name: self.text};
+			alert("im inside getPlayerTwo");
+			console.log(self.play.playerTwo);
+			self.play.$save(self.play.playerTwo);			
+		});
 
 		
 		

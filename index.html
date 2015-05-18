@@ -36,14 +36,21 @@
 <body ng-controller="TictactoeController as tttCtrl">
 
 	<header>
-		<h1 id="message">{{tttCtrl.play.winner}}</h1>
+		<h1 id="message">{{ tttCtrl.play.winner }}</h1>
 		<h1 id="reset">next game</h1>
 	</header>
 
 	<div class="wrapper">
 		<div class="p-one-block">
-			<h1 id="p-one">player one</h1>
-			<h1 id="p-one-score">{{tttCtrl.play.p1Score}}</h1>		
+			<h1 id="p-one">
+				{{ tttCtrl.play.playerOne.name }}
+				<input type="text" ng-model="tttCtrl.text">
+				<input type="button" ng-click="tttCtrl.getPlayerOne()">
+			</h1>
+<!-- 			<form ng-submit="presidents.addPresident(presidents.newPresident)">
+            <input type="text" ng-model="presidents.newPresident.name" placeholder="Add a new President's name">
+            </form> -->
+			<h1 id="p-one-score">{{ tttCtrl.play.p1Score }}</h1>		
 		</div>
 
 		<div class="board">
@@ -51,8 +58,12 @@
 		</div>
 
 		<div class="p-two-block">
-			<h1 id="p-two">player two</h1>
-			<h1 id="p-two-score">{{tttCtrl.play.p2Score}}</h1>		
+			<h1 id="p-two">
+				{{ tttCtrl.play.playerTwo.name }}
+				<input type="text" ng-model="tttCtrl.text">
+				<input type="button" ng-click="tttCtrl.getPlayerTwo()">
+			</h1>
+			<h1 id="p-two-score">{{ tttCtrl.play.p2Score }}</h1>		
 		</div>	
 		<div class="clearfix"></div>	
 	</div>
