@@ -44,8 +44,9 @@
 		<div class="p-one-block">
 			<h1 id="p-one">
 				{{ tttCtrl.play.playerOne.name }}
-				<input type="text" ng-model="tttCtrl.text">
-				<input type="button" ng-click="tttCtrl.getPlayerOne()">
+				<form ng-submit="tttCtrl.getPlayerOne()">
+				<input type="text" ng-model="tttCtrl.text1" placeholder="enter player1 name">
+				</form>
 			</h1>
 <!-- 			<form ng-submit="presidents.addPresident(presidents.newPresident)">
             <input type="text" ng-model="presidents.newPresident.name" placeholder="Add a new President's name">
@@ -60,8 +61,9 @@
 		<div class="p-two-block">
 			<h1 id="p-two">
 				{{ tttCtrl.play.playerTwo.name }}
-				<input type="text" ng-model="tttCtrl.text">
-				<input type="button" ng-click="tttCtrl.getPlayerTwo()">
+				<form ng-submit="tttCtrl.getPlayerTwo()">
+				<input type="text" ng-model="tttCtrl.text2" placeholder="enter player1 name">
+				</form>
 			</h1>
 			<h1 id="p-two-score">{{ tttCtrl.play.p2Score }}</h1>		
 		</div>	
