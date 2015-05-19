@@ -35,14 +35,14 @@
 
 <body ng-controller="TictactoeController as tttCtrl">
 
-	<header>
+	<header ng-class="tttCtrl.play.clearboard.visibility">
 		<h1 id="message" ng-class="tttCtrl.play.winner.color;"> 
 			{{ tttCtrl.play.winner.message }} 
 		</h1>
-		<h1 id="reset" ng-class="tttCtrl.play.clearboard.visibility" ng-click="tttCtrl.resetBoard()">clear board</h1>
+		<h1 id="reset" ng-click="tttCtrl.resetBoard()">clear board</h1>
 	</header>
 
-	<div class="wrapper">
+	<div class="wrapper" ng-class="tttCtrl.play.wrapperBackground.whoWon">
 		<div class="p-one-block">
 			<h1 id="p-one"> {{ tttCtrl.play.playerOne.name }} </h1>
 			<h1 id="p-one-score">{{ tttCtrl.play.p1Score }}</h1>

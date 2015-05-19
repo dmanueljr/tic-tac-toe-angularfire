@@ -81,16 +81,8 @@ angular
 				self.play.winner.message = self.play.playerTwo.name + " wins!";
 			}
 
-			for (i = 0; i < 9; i++) {
-				self.game[i].whoIsHere = x;
-			}
-
 			self.play.clearboard.visibility = "show";	
 
-			// resets board if game series not over
-//			// if (self.play.p1Score < 5 && self.play.p2Score < 5) {
-
-			// }
 		});
 
 

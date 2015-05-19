@@ -127,6 +127,10 @@ text-align: right;
 	color: #ffff00;
 }
 
+.pacman-wraps {
+	background-image: url('../images/wrapper-pacman.png')
+}
+
 .ghost-wins {
 	color: #ff0000;
 }
